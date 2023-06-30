@@ -14,7 +14,7 @@ const fetchPost = async () => {
 const Posts = (props) => {
     
     const [postList, setPostList] = useState([
-        {id: 1, title: '테스트', body: '취미는 게임'},
+        {id: 1, title: '써니사이드업 만들기', body: '취미는 게임'},
         {id: 2, title: '하하', body: '스마트폰은 아이폰'},
         {id: 3, title: '굿굿', body: '건강은 운동'}
     ]);
@@ -24,11 +24,12 @@ const Posts = (props) => {
             <Title>{props.title}</Title>
             <PostList>
                     {postList.map((post) => (
-                        <NavLink to={`/post/${post.id}`}>
-                            <Post key={post.id}>
+                        
+                            <Post key={post.id} to={`/post/${post.id}`}>
+                                {/* <NavLink to={`/post/${post.id}`}>{post.title}</NavLink> */}
                                 <h3>{post.title}</h3>
                             </Post>
-                        </NavLink>
+                        
                     ))}
                 
             </PostList>
@@ -44,18 +45,49 @@ const Container = styled.div`
 `
 
 const Title = styled.h1`
-    font-size: 1.5em;
+    font-size: 44px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    font-family:"BMDOHYEON";
 `
 
 const PostList = styled.div`
     padding: 1rem;
-    border: 1px solid black;
-    width: 30%;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 `
 
-const Post = styled.div`
+const Post = styled(NavLink)`
     width: 300px;
-    height: 150px;
+    height: 60px;
+    border: 0.5px solid lightgrey;
+    background: white;
+    border-radius: 12px;
+    text-decoration: none;
+    margin-bottom: 30px;
+    font-family:'KoPubWorldDotum';
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    h3{
+        text-align: center;
+        font-size: 24px;
+        color:#2196F3;
+        margin : 0px;
+    }
+
+    & + &{
+        margin-bottom: 30px;
+    }
+    -webkit-box-shadow: 5px 4px 6px -1px rgba(0,0,0,0.07); 
+    box-shadow: 5px 4px 6px -1px rgba(0,0,0,0.07);
+    transition: 0.2s;
+    &:hover{
+        transform: scale(1.04);
+    }
+
 `
 
 
